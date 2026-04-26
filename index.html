@@ -4,409 +4,1242 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ekida Farra Salsabiila — Data & Business Intelligence</title>
-  <meta name="description" content="Portfolio of Ekida Farra Salsabiila — Data Analyst & Business Intelligence. Power BI, SQL, Python projects." />
+  <meta name="description" content="Portfolio of Ekida Farra Salsabiila — Data Analyst & Business Intelligence." />
 
-  <!-- Fonts: JetBrains Mono (display/mono) + Fraunces (serif body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    :root {
+      --bg:           #ffffff;
+      --bg-soft:      #f7f5f1;        /* warm cream section */
+      --bg-card:      #faf9f6;
+      --ink:          #0f0f1a;
+      --ink-2:        #2a2a3a;
+      --muted:        #6b6b7a;
+      --muted-2:      #9a9aa8;
+      --line:         #e8e6df;
+      --line-2:       #d8d6cf;
+
+      /* Hero gradient palette */
+      --hero-deep:    #0a0a1f;
+      --hero-mid:     #1f1a4a;
+      --hero-glow:    #5b4fff;
+      --hero-glow-2:  #b8a4ff;
+
+      /* Accents */
+      --accent:       #5b4fff;        /* indigo */
+      --accent-2:     #b8a4ff;
+      --accent-soft:  #ede9ff;
+      --green:        #22c55e;
+      --orange:       #ff8a3d;
+      --pink:         #ff6b9d;
+
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max:  1200px;
+      --pad:  clamp(20px, 4vw, 48px);
+      --radius:    14px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      line-height: 1.55;
+      font-size: 16px;
+      overflow-x: hidden;
+      font-weight: 400;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+    a { color: inherit; text-decoration: none; }
+
+    /* =========================================================
+       NAV (floating pill on hero)
+       ========================================================= */
+    .nav-wrap {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 0 var(--pad);
+    }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px 12px 22px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-pill);
+    }
+    .nav__brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav__brand-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--hero-glow), var(--accent-2));
+      display: inline-block;
+    }
+    .nav__links {
+      list-style: none;
+      display: flex;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav__links a {
+      display: inline-block;
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-pill);
+      transition: background .2s ease, color .2s ease;
+    }
+    .nav__links a:hover,
+    .nav__links a.is-active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .nav__cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+    /* =========================================================
+       HERO — dark gradient with glow
+       ========================================================= */
+    .hero {
+      position: relative;
+      padding: 160px var(--pad) 120px;
+      background:
+        radial-gradient(ellipse 700px 400px at 50% 35%, rgba(91,79,255,0.55), transparent 65%),
+        radial-gradient(ellipse 500px 400px at 50% 80%, rgba(184,164,255,0.18), transparent 70%),
+        linear-gradient(180deg, var(--hero-deep) 0%, #15123a 60%, #0d0a26 100%);
+      overflow: hidden;
+      text-align: center;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+    }
+    .hero__badge-pill {
+      padding: 3px 10px;
+      background: var(--accent);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .hero__title {
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin: 0 0 24px;
+      color: #fff;
+    }
+    .hero__title .accent-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      padding: 0.05em 0.5em;
+      background: linear-gradient(135deg, #fff, #e0d8ff);
+      color: var(--ink);
+      border-radius: 999px;
+      margin: 0 0.1em;
+      transform: translateY(-0.05em);
+    }
+    .hero__title em {
+      font-style: normal;
+      font-weight: 400;
+      color: var(--accent-2);
+    }
+    .hero__title .wave {
+      display: inline-block;
+      vertical-align: middle;
+      transform: translateY(-0.15em);
+      color: var(--accent-2);
+      font-size: 0.7em;
+      font-weight: 400;
+      margin: 0 0.1em;
+    }
+
+    .hero__lede {
+      font-size: 17px;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn--primary {
+      background: #fff;
+      color: var(--ink);
+    }
+    .btn--primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+    }
+    .btn--ghost {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+    }
+    .btn--ghost:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-1px);
+    }
+    .btn-arrow {
+      width: 18px; height: 18px;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+    }
+
+    /* =========================================================
+       TRUST BAR
+       ========================================================= */
+    .trust {
+      padding: 56px var(--pad) 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .trust__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .trust__label {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+    .trust__logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px 56px;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+    }
+    .trust__logos span {
+      opacity: 0.7;
+      transition: opacity .2s ease, color .2s ease;
+    }
+    .trust__logos span:hover { opacity: 1; color: var(--ink); }
+
+    /* =========================================================
+       SECTION FRAMING
+       ========================================================= */
+    section { position: relative; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    .section-pad {
+      padding: 96px var(--pad);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-2);
+      margin-bottom: 20px;
+    }
+    .pill__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .section-lede {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 56px;
+      line-height: 1.55;
+    }
+    .section-head {
+      text-align: center;
+    }
+
+    /* =========================================================
+       ABOUT cards (3-up like reference)
+       ========================================================= */
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: var(--max);
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+    .about-card {
+      padding: 36px 32px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background .25s ease;
+    }
+    .about-card:last-child { border-right: none; }
+    .about-card:hover { background: var(--bg-card); }
+
+    .about-card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+    .about-card__title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin: 0 0 10px;
+    }
+    .about-card__desc {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* =========================================================
+       STATS (cream section like reference)
+       ========================================================= */
+    .stats-section {
+      background: var(--bg-soft);
+      padding: 96px var(--pad);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .stats-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .stats-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(91,79,255,0.35), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255,138,61,0.25), transparent 50%),
+        linear-gradient(135deg, #1a1640, #2d2370);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 30px 80px -20px rgba(91,79,255,0.4);
+    }
+    .stats-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .stats-visual__chart {
+      position: relative;
+      z-index: 2;
+      width: 70%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 8px;
+      height: 50%;
+    }
+    .stats-visual__chart i {
+      flex: 1;
+      background: linear-gradient(180deg, var(--accent-2), var(--accent));
+      border-radius: 4px 4px 0 0;
+      box-shadow: 0 0 20px rgba(184,164,255,0.4);
+      animation: barRise 2s ease forwards;
+      transform-origin: bottom;
+      transform: scaleY(0);
+    }
+    .stats-visual__chart i:nth-child(1){ height: 40%; animation-delay: .1s; }
+    .stats-visual__chart i:nth-child(2){ height: 65%; animation-delay: .2s; }
+    .stats-visual__chart i:nth-child(3){ height: 50%; animation-delay: .3s; }
+    .stats-visual__chart i:nth-child(4){ height: 80%; animation-delay: .4s; }
+    .stats-visual__chart i:nth-child(5){ height: 95%; animation-delay: .5s; }
+    .stats-visual__chart i:nth-child(6){ height: 75%; animation-delay: .6s; }
+    @keyframes barRise {
+      to { transform: scaleY(1); }
+    }
+    .stats-visual__label {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      z-index: 3;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stats-visual__label-icon {
+      width: 18px; height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--hero-glow), var(--accent-2));
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px 24px;
+    }
+    .stat-card {
+      padding: 0;
+    }
+    .stat-card__num {
+      font-size: clamp(40px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin: 0 0 8px;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .stat-card__num sup {
+      font-size: 0.5em;
+      color: var(--accent);
+      vertical-align: super;
+      margin-left: 2px;
+    }
+    .stat-card__label {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* =========================================================
+       PROJECTS — colorful product cards
+       ========================================================= */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .project-card {
+      padding: 28px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .2s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px -20px rgba(15,15,26,0.15);
+      border-color: var(--line-2);
+    }
+    .project-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .icon--indigo  { background: linear-gradient(135deg, #5b4fff, #8d7eff); }
+    .icon--orange  { background: linear-gradient(135deg, #ff8a3d, #ffb37a); }
+    .icon--pink    { background: linear-gradient(135deg, #ff6b9d, #ffa6c0); }
+    .icon--green   { background: linear-gradient(135deg, #22c55e, #6ee7a3); }
+    .icon--slate   { background: linear-gradient(135deg, #475569, #94a3b8); }
+
+    .project-card__title {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin: 0 0 8px;
+    }
+    .project-card__desc {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 20px;
+      flex: 1;
+    }
+    .project-card__tags {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0;
+      margin: 0 0 18px;
+    }
+    .project-card__tags li {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      background: var(--bg-soft);
+      border-radius: var(--radius-pill);
+      color: var(--ink-2);
+    }
+    .project-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap .25s ease;
+    }
+    .project-card:hover .project-card__link { gap: 10px; }
+
+    /* =========================================================
+       EXPERIENCE — clean list
+       ========================================================= */
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 800px;
+      border-top: 1px solid var(--line);
+    }
+    .timeline__item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline__date {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      padding-top: 4px;
+    }
+    .timeline__body h3 {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin: 0 0 4px;
+    }
+    .timeline__org {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      margin: 0 0 12px;
+    }
+    .timeline__body p {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* =========================================================
+       SKILLS — chip grid
+       ========================================================= */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .skill-block {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+    }
+    .skill-block__title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .skill-chips li {
+      padding: 7px 14px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink-2);
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .skill-chips li:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* =========================================================
+       CONTACT CTA
+       ========================================================= */
+    .cta-section {
+      padding: 96px var(--pad);
+      text-align: center;
+    }
+    .cta-card {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 64px 40px;
+      background:
+        radial-gradient(ellipse 500px 300px at 50% 30%, rgba(91,79,255,0.45), transparent 60%),
+        linear-gradient(180deg, var(--hero-deep), #1a1640);
+      border-radius: var(--radius-lg);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+    }
+    .cta-card > * { position: relative; z-index: 1; }
+
+    .cta-card h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+    .cta-card p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .footer {
+      padding: 40px var(--pad);
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+    }
+    .footer__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer__brand {
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .footer__links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .footer__links a:hover { color: var(--ink); }
+    .footer__copy {
+      font-size: 13px;
+      color: var(--muted-2);
+    }
+
+    /* =========================================================
+       REVEAL
+       ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.is-in { opacity: 1; transform: translateY(0); }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 900px) {
+      .nav__links { display: none; }
+      .hero { padding: 130px var(--pad) 90px; }
+      .about-cards { grid-template-columns: 1fr; }
+      .about-card { border-right: none; }
+      .stats-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .stats-visual { aspect-ratio: 16/10; max-height: 320px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .timeline__item { grid-template-columns: 1fr; gap: 8px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .footer__inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .nav { padding: 10px 14px 10px 16px; }
+      .nav-wrap { top: 16px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+      .section-pad, .stats-section, .cta-section { padding: 64px var(--pad); }
+      .cta-card { padding: 48px 24px; }
+      .trust__logos { gap: 24px 32px; font-size: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Grid backdrop -->
-  <div class="grid-bg" aria-hidden="true"></div>
 
-  <!-- Top status bar -->
-  <header class="status-bar">
-    <div class="status-bar__inner">
-      <div class="status-cluster">
-        <span class="dot dot--live"></span>
-        <span class="status-text">SYSTEM // ONLINE</span>
-      </div>
-      <div class="status-cluster status-center">
-        <span class="status-text" id="clock">--:--:-- WIB</span>
-      </div>
-      <div class="status-cluster status-right">
-        <span class="status-text">v.2026.01</span>
+  <!-- NAV (floats over hero) -->
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="#top" class="nav__brand">
+        <span class="nav__brand-dot"></span>
+        EFS
+      </a>
+      <ul class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+      <a href="#contact" class="nav__cta">
+        Get in touch
+        <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero__inner">
+      <span class="hero__badge">
+        <span class="hero__badge-pill">NEW</span>
+        Available for new opportunities
+      </span>
+
+      <h1 class="hero__title">
+        Turning Data <span class="accent-pill">📊</span> Into Decisions
+        <br>That <em>Actually Matter<span class="wave">~</span></em>
+      </h1>
+
+      <p class="hero__lede">
+        I'm Ekida — a Mathematics graduate from UGM, currently building dashboards and ETL pipelines as a Business Intelligence Staff at Sinar Mas Land.
+      </p>
+
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary">
+          View Projects
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--ghost">
+          About Me
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="#top" class="nav__brand">
-      <span class="nav__bracket">[</span>EFS<span class="nav__bracket">]</span>
-    </a>
-    <ul class="nav__links">
-      <li><a href="#about"><span class="nav__num">01</span> About</a></li>
-      <li><a href="#projects"><span class="nav__num">02</span> Projects</a></li>
-      <li><a href="#experience"><span class="nav__num">03</span> Experience</a></li>
-      <li><a href="#skills"><span class="nav__num">04</span> Skills</a></li>
-      <li><a href="#contact"><span class="nav__num">05</span> Contact</a></li>
-    </ul>
-  </nav>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__meta">
-        <span class="tag">// PORTFOLIO_INDEX</span>
-        <span class="tag tag--muted">JKT, ID · 06.34°S 106.82°E</span>
+  <!-- TRUST BAR -->
+  <section class="trust">
+    <div class="trust__inner">
+      <p class="trust__label">Built with tools used by teams worldwide</p>
+      <div class="trust__logos">
+        <span>Power BI</span>
+        <span>SQL</span>
+        <span>Python</span>
+        <span>SAP</span>
+        <span>TensorFlow</span>
+        <span>Looker</span>
       </div>
+    </div>
+  </section>
 
-      <h1 class="hero__title">
-        <span class="hero__line">Ekida Farra</span>
-        <span class="hero__line hero__line--accent">Salsabiila<span class="cursor">_</span></span>
-      </h1>
-
-      <div class="hero__role">
-        <span class="role-label">ROLE</span>
-        <span class="role-value">Data Analyst &middot; Business Intelligence</span>
+  <!-- ABOUT (3 cards like reference) -->
+  <section id="about" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill"><span class="pill__dot"></span> What I do</span>
+        <h2 class="section-title">A mathematician turning numbers <em>into narratives.</em></h2>
+        <p class="section-lede">
+          I work where precision meets usefulness — writing SQL, modeling data in Power BI, and shipping reports people actually open.
+        </p>
       </div>
+    </div>
 
-      <p class="hero__lede">
-        Mathematics graduate from <em>Universitas Gadjah Mada</em> turning operational data
-        into decisions. Currently building dashboards and ETL pipelines at
-        <strong>Sinar Mas Land</strong>.
-      </p>
-
-      <!-- Data card -->
-      <div class="datacard">
-        <div class="datacard__row">
-          <span class="datacard__key">DASHBOARDS_BUILT</span>
-          <span class="datacard__sep">·····················</span>
-          <span class="datacard__val">5+</span>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="about-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3v18h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M7 14l3-3 3 3 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-        <div class="datacard__row">
-          <span class="datacard__key">DASHBOARDS_MAINTAINED</span>
-          <span class="datacard__sep">·················</span>
-          <span class="datacard__val">25+</span>
+        <h3 class="about-card__title">Dashboards that ship</h3>
+        <p class="about-card__desc">5+ Power BI dashboards built from scratch and 25+ maintained — for real teams making real calls.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M3 9h18M8 4v16" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
         </div>
-        <div class="datacard__row">
-          <span class="datacard__key">YEARS_EXPERIENCE</span>
-          <span class="datacard__sep">······················</span>
-          <span class="datacard__val">1.5</span>
+        <h3 class="about-card__title">SQL &amp; ETL fluency</h3>
+        <p class="about-card__desc">Clean queries, sensible joins, working pipelines across SAP ECC, S/4HANA, and BW.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
         </div>
-        <div class="datacard__row">
-          <span class="datacard__key">GPA_UGM</span>
-          <span class="datacard__sep">······························</span>
-          <span class="datacard__val">3.57 / 4.00</span>
+        <h3 class="about-card__title">Math foundations</h3>
+        <p class="about-card__desc">UGM Mathematics, GPA 3.57. Comfortable with stats, ML, and the why behind the model.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS (cream section, image + numbers) -->
+  <section class="stats-section">
+    <div class="stats-wrap">
+      <div class="stats-visual">
+        <div class="stats-visual__chart">
+          <i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="stats-visual__label">
+          <span class="stats-visual__label-icon"></span>
+          Live dashboards
         </div>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section__head">
-        <span class="section__num">01</span>
-        <h2 class="section__title">About</h2>
-        <span class="section__rule"></span>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-grid__col">
-          <p class="prose">
-            I work at the intersection of <em>numbers</em> and <em>narrative</em>.
-            My background in mathematics taught me to be precise; my time in business intelligence
-            taught me to be useful. I spend most of my days writing SQL, modeling data in Power BI,
-            and trying to make reports that people actually open.
-          </p>
-          <p class="prose">
-            Outside of dashboards I'm interested in machine learning, graph theory
-            (the topic of my undergraduate thesis), and finding new ways to teach
-            others what I'm still learning myself.
-          </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-card__num">5<sup>+</sup></p>
+          <p class="stat-card__label">Dashboards built</p>
         </div>
-
-        <aside class="about-grid__aside">
-          <div class="kv">
-            <span class="kv__k">based_in</span>
-            <span class="kv__v">Jakarta, ID</span>
-          </div>
-          <div class="kv">
-            <span class="kv__k">education</span>
-            <span class="kv__v">Mathematics, UGM</span>
-          </div>
-          <div class="kv">
-            <span class="kv__k">currently</span>
-            <span class="kv__v">BI Staff @ Sinar Mas Land</span>
-          </div>
-          <div class="kv">
-            <span class="kv__k">stack</span>
-            <span class="kv__v">PowerBI · SQL · Python</span>
-          </div>
-          <div class="kv">
-            <span class="kv__k">availability</span>
-            <span class="kv__v"><span class="dot dot--live small"></span> open to chat</span>
-          </div>
-        </aside>
+        <div class="stat-card">
+          <p class="stat-card__num">25<sup>+</sup></p>
+          <p class="stat-card__label">Dashboards maintained</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card__num">97<sup>%</sup></p>
+          <p class="stat-card__label">Loan model accuracy</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card__num">76</p>
+          <p class="stat-card__label">Students taught</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card__num">3.57</p>
+          <p class="stat-card__label">UGM GPA</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card__num">4</p>
+          <p class="stat-card__label">ML certifications</p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="section__head">
-        <span class="section__num">02</span>
-        <h2 class="section__title">Projects</h2>
-        <span class="section__rule"></span>
+  <!-- PROJECTS -->
+  <section id="projects" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill"><span class="pill__dot"></span> Projects</span>
+        <h2 class="section-title">Selected work, <em>built to be useful.</em></h2>
+        <p class="section-lede">
+          Analytics, dashboards, and machine learning. Each card is a placeholder — drop in screenshots and links as they go live.
+        </p>
       </div>
 
-      <p class="section__intro">
-        A curated selection of analytics, visualization, and machine-learning work.
-        Each is a placeholder — drop in screenshots, links, and write-ups as you publish them.
-      </p>
+      <div class="projects-grid">
 
-      <div class="projects">
-
-        <article class="project">
-          <header class="project__head">
-            <span class="project__num">/01</span>
-            <span class="project__year">2024</span>
-          </header>
-          <h3 class="project__title">Olympic Paris 2024 Report</h3>
-          <p class="project__desc">
-            Scraped Kaggle data via Python and built Power BI dashboards analyzing the
-            relationship between each country's medal count and GDP.
-          </p>
-          <ul class="project__tags">
-            <li>Power BI</li><li>Python</li><li>Kaggle API</li>
-          </ul>
-          <div class="project__links">
-            <a href="#" class="link">→ GitHub</a>
-            <a href="#" class="link link--muted">→ Case study</a>
-          </div>
+        <article class="project-card">
+          <div class="project-card__icon icon--indigo">PB</div>
+          <h3 class="project-card__title">Olympic Paris 2024</h3>
+          <p class="project-card__desc">Power BI dashboards analyzing medal counts vs GDP, built on Kaggle data scraped via Python.</p>
+          <ul class="project-card__tags"><li>Power BI</li><li>Python</li><li>Kaggle</li></ul>
+          <a href="#" class="project-card__link">View project →</a>
         </article>
 
-        <article class="project">
-          <header class="project__head">
-            <span class="project__num">/02</span>
-            <span class="project__year">2023</span>
-          </header>
-          <h3 class="project__title">Loan Classification Model</h3>
-          <p class="project__desc">
-            Binary classifier for loan quality using Logistic Regression, LDA, Random Forest
-            and XGBoost. Random Forest delivered the highest accuracy at <strong>97%</strong>.
-          </p>
-          <ul class="project__tags">
-            <li>Python</li><li>scikit-learn</li><li>XGBoost</li>
-          </ul>
-          <div class="project__links">
-            <a href="#" class="link">→ Colab</a>
-            <a href="#" class="link link--muted">→ Deck</a>
-          </div>
+        <article class="project-card">
+          <div class="project-card__icon icon--orange">ML</div>
+          <h3 class="project-card__title">Loan Classifier</h3>
+          <p class="project-card__desc">Binary loan-quality classifier with Random Forest topping the leaderboard at 97% accuracy.</p>
+          <ul class="project-card__tags"><li>Python</li><li>scikit-learn</li><li>XGBoost</li></ul>
+          <a href="#" class="project-card__link">View project →</a>
         </article>
 
-        <article class="project">
-          <header class="project__head">
-            <span class="project__num">/03</span>
-            <span class="project__year">2023</span>
-          </header>
-          <h3 class="project__title">FokusIn — Face Recognition Web App</h3>
-          <p class="project__desc">
-            TensorFlow-based face recognition model (81% accuracy) for detecting user attention
-            span. Built during Bangkit Academy in collaboration with Android & Cloud cohorts.
-          </p>
-          <ul class="project__tags">
-            <li>TensorFlow</li><li>CV</li><li>Bangkit</li>
-          </ul>
-          <div class="project__links">
-            <a href="#" class="link">→ GitHub</a>
-            <a href="#" class="link link--muted">→ Deck</a>
-          </div>
+        <article class="project-card">
+          <div class="project-card__icon icon--pink">CV</div>
+          <h3 class="project-card__title">FokusIn</h3>
+          <p class="project-card__desc">TensorFlow face-recognition model for attention tracking — built during Bangkit Academy.</p>
+          <ul class="project-card__tags"><li>TensorFlow</li><li>CV</li><li>Bangkit</li></ul>
+          <a href="#" class="project-card__link">View project →</a>
         </article>
 
-        <article class="project">
-          <header class="project__head">
-            <span class="project__num">/04</span>
-            <span class="project__year">2023</span>
-          </header>
-          <h3 class="project__title">Supermarket Sales — Looker Studio</h3>
-          <p class="project__desc">
-            Interactive dashboard tracking sales trends, product performance, and branch
-            comparisons with filters supporting drill-down decisions.
-          </p>
-          <ul class="project__tags">
-            <li>Looker Studio</li><li>BigQuery</li>
-          </ul>
-          <div class="project__links">
-            <a href="#" class="link">→ GitHub</a>
-            <a href="#" class="link link--muted">→ Live report</a>
-          </div>
+        <article class="project-card">
+          <div class="project-card__icon icon--green">LS</div>
+          <h3 class="project-card__title">Supermarket Sales</h3>
+          <p class="project-card__desc">Looker Studio dashboard for sales trends, branch comparisons, and product performance.</p>
+          <ul class="project-card__tags"><li>Looker</li><li>BigQuery</li></ul>
+          <a href="#" class="project-card__link">View project →</a>
         </article>
 
-        <!-- Empty placeholder for future work -->
-        <article class="project project--empty">
-          <header class="project__head">
-            <span class="project__num">/05</span>
-            <span class="project__year">soon</span>
-          </header>
-          <h3 class="project__title">In progress</h3>
-          <p class="project__desc">
-            New work cooking. Time-series forecasting, an OCR experiment, or your next idea.
-          </p>
-          <div class="empty-glyph">+</div>
+        <article class="project-card">
+          <div class="project-card__icon icon--slate">SAP</div>
+          <h3 class="project-card__title">Actual vs Budget</h3>
+          <p class="project-card__desc">Power BI report consolidating SAP ECC + S/4HANA FICO data for financial performance tracking.</p>
+          <ul class="project-card__tags"><li>SAP BW</li><li>Power BI</li><li>FICO</li></ul>
+          <a href="#" class="project-card__link">View project →</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__icon icon--indigo">+</div>
+          <h3 class="project-card__title">More coming soon</h3>
+          <p class="project-card__desc">Time-series forecasting and an OCR experiment in the pipeline.</p>
+          <ul class="project-card__tags"><li>WIP</li></ul>
+          <a href="#" class="project-card__link">Stay tuned →</a>
         </article>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <div class="section__head">
-        <span class="section__num">03</span>
-        <h2 class="section__title">Experience</h2>
-        <span class="section__rule"></span>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section-pad" style="background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill"><span class="pill__dot"></span> Experience</span>
+        <h2 class="section-title">Where I've worked, <em>what I built.</em></h2>
       </div>
 
       <ol class="timeline">
         <li class="timeline__item">
-          <div class="timeline__date">DEC 2024 → NOW</div>
+          <div class="timeline__date">Dec 2024 — Now</div>
           <div class="timeline__body">
             <h3>Business Intelligence Staff</h3>
             <p class="timeline__org">Sinar Mas Land</p>
-            <p class="prose">
-              Develop and maintain 25+ Power BI dashboards for sales, customer service,
-              and operations. Build SAP-integrated Actual vs Budget reporting (FICO module,
-              SAP ECC + S/4HANA). Run ad-hoc SQL ETL for urgent business asks.
-            </p>
+            <p>Develop and maintain 25+ Power BI dashboards. Build SAP-integrated Actual vs Budget reporting (FICO, ECC + S/4HANA). Run ad-hoc SQL ETL for urgent business requests.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <div class="timeline__date">MAY 2024 → NOV 2024</div>
+          <div class="timeline__date">May — Nov 2024</div>
           <div class="timeline__body">
             <h3>Business Intelligence Intern</h3>
             <p class="timeline__org">Sinar Mas Land</p>
-            <p class="prose">
-              Built customer retention and data quality dashboards. Led System Integration
-              Testing for 7 dashboards using SQL. Mapped fact and dimension tables for the
-              migration of 4 reports from legacy Excel pipelines.
-            </p>
+            <p>Built customer retention and data quality dashboards. Led System Integration Testing for 7 dashboards using SQL. Mapped fact and dimension tables for the migration of 4 reports from legacy Excel pipelines.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <div class="timeline__date">AUG 2023 → DEC 2023</div>
+          <div class="timeline__date">Aug — Dec 2023</div>
           <div class="timeline__body">
             <h3>Data Analyst Intern</h3>
             <p class="timeline__org">Skolla EdTech</p>
-            <p class="prose">
-              Re-designed three dashboards (user demography, behaviour, sales) in Looker Studio
-              based on PRDs I authored. QA testing surfaced a 15% error rate before deployment,
-              improving downstream report reliability.
-            </p>
+            <p>Re-designed three Looker Studio dashboards based on PRDs I authored. QA testing surfaced a 15% error rate before deployment, improving downstream report reliability.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <div class="timeline__date">AUG 2023 → DEC 2023</div>
+          <div class="timeline__date">Aug — Dec 2023</div>
           <div class="timeline__body">
-            <h3>Lecture Assistant — Mathematical Modelling</h3>
+            <h3>Lecture Assistant — Math Modelling</h3>
             <p class="timeline__org">Universitas Gadjah Mada</p>
-            <p class="prose">
-              Graded coursework for 76 students and offered office-hour guidance on
-              differential equations, probability, and optimization.
-            </p>
+            <p>Graded coursework for 76 students; office-hour guidance on differential equations, probability, and optimization.</p>
           </div>
         </li>
       </ol>
-    </section>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="section__head">
-        <span class="section__num">04</span>
-        <h2 class="section__title">Skills</h2>
-        <span class="section__rule"></span>
+  <!-- SKILLS -->
+  <section id="skills" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill"><span class="pill__dot"></span> Skills</span>
+        <h2 class="section-title">The <em>toolkit</em> I work with daily.</h2>
       </div>
 
-      <div class="skills">
+      <div class="skills-grid">
         <div class="skill-block">
-          <h4 class="skill-block__title">// data &amp; bi</h4>
-          <ul class="skill-list">
-            <li><span>Power BI</span><span class="bar"><i style="--w:80%"></i></span></li>
-            <li><span>SQL</span><span class="bar"><i style="--w:80%"></i></span></li>
-            <li><span>Looker Studio</span><span class="bar"><i style="--w:75%"></i></span></li>
-            <li><span>SAP (BW · ECC · S/4HANA)</span><span class="bar"><i style="--w:65%"></i></span></li>
-            <li><span>Excel</span><span class="bar"><i style="--w:85%"></i></span></li>
+          <h4 class="skill-block__title">Data &amp; BI</h4>
+          <ul class="skill-chips">
+            <li>Power BI</li><li>SQL</li><li>Looker Studio</li>
+            <li>SAP BW</li><li>SAP ECC</li><li>SAP S/4HANA</li>
+            <li>Excel</li><li>ETL</li>
           </ul>
         </div>
         <div class="skill-block">
-          <h4 class="skill-block__title">// programming</h4>
-          <ul class="skill-list">
-            <li><span>Python</span><span class="bar"><i style="--w:75%"></i></span></li>
-            <li><span>scikit-learn</span><span class="bar"><i style="--w:70%"></i></span></li>
-            <li><span>TensorFlow</span><span class="bar"><i style="--w:65%"></i></span></li>
-            <li><span>Pandas / NumPy</span><span class="bar"><i style="--w:80%"></i></span></li>
+          <h4 class="skill-block__title">Programming</h4>
+          <ul class="skill-chips">
+            <li>Python</li><li>scikit-learn</li><li>TensorFlow</li>
+            <li>Pandas</li><li>NumPy</li><li>Git</li>
           </ul>
         </div>
         <div class="skill-block">
-          <h4 class="skill-block__title">// foundations</h4>
-          <ul class="skill-list skill-list--plain">
-            <li>Statistics &amp; Probability</li>
-            <li>Linear Algebra · Calculus</li>
-            <li>Graph Theory</li>
-            <li>Machine Learning</li>
-            <li>Data Modelling &amp; ETL</li>
+          <h4 class="skill-block__title">Foundations</h4>
+          <ul class="skill-chips">
+            <li>Statistics</li><li>Probability</li>
+            <li>Linear Algebra</li><li>Calculus</li>
+            <li>Graph Theory</li><li>Machine Learning</li>
           </ul>
         </div>
         <div class="skill-block">
-          <h4 class="skill-block__title">// certifications</h4>
-          <ul class="skill-list skill-list--plain">
-            <li>Mathematics for ML — Coursera</li>
-            <li>ML Specialization — Coursera</li>
-            <li>TensorFlow Developer — DeepLearning.AI</li>
-            <li>TF Data &amp; Deployment — Coursera</li>
+          <h4 class="skill-block__title">Certifications</h4>
+          <ul class="skill-chips">
+            <li>Math for ML</li>
+            <li>ML Specialization</li>
+            <li>TF Developer</li>
+            <li>TF Data &amp; Deployment</li>
           </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section class="section section--contact" id="contact">
-      <div class="section__head">
-        <span class="section__num">05</span>
-        <h2 class="section__title">Contact</h2>
-        <span class="section__rule"></span>
+  <!-- CTA / CONTACT -->
+  <section id="contact" class="cta-section">
+    <div class="cta-card">
+      <h2>Let's build something together.</h2>
+      <p>Have a project, role, or question? I'd love to hear from you.</p>
+      <div class="hero__cta">
+        <a href="mailto:ekidafarrasalsabiila@gmail.com" class="btn btn--primary">
+          Email me
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/ekidafarrasalsabiila/" target="_blank" rel="noopener" class="btn btn--ghost">
+          LinkedIn
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="contact">
-        <p class="contact__lede">
-          Have a project, role, or question? The fastest channels:
-        </p>
-
-        <ul class="contact__list">
-          <li>
-            <span class="contact__key">EMAIL</span>
-            <a class="contact__val link" href="mailto:ekidafarrasalsabiila@gmail.com">
-              ekidafarrasalsabiila@gmail.com
-            </a>
-          </li>
-          <li>
-            <span class="contact__key">LINKEDIN</span>
-            <a class="contact__val link" href="https://linkedin.com/in/ekidafarrasalsabiila/" target="_blank" rel="noopener">
-              /in/ekidafarrasalsabiila
-            </a>
-          </li>
-          <li>
-            <span class="contact__key">PHONE</span>
-            <a class="contact__val link" href="tel:+6281325183143">+62 813-2518-3143</a>
-          </li>
-          <li>
-            <span class="contact__key">GITHUB</span>
-            <a class="contact__val link" href="#">add your handle ↗</a>
-          </li>
-        </ul>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span style="display:inline-block;width:18px;height:18px;border-radius:6px;background:linear-gradient(135deg,#5b4fff,#b8a4ff);vertical-align:middle;margin-right:8px;"></span>
+        EFS
       </div>
-    </section>
-  </main>
-
-  <footer class="foot">
-    <div class="foot__inner">
-      <span class="foot__col">© <span id="year">2026</span> EKIDA FARRA SALSABIILA</span>
-      <span class="foot__col foot__col--center">BUILT WITH HTML · CSS · A LITTLE JS</span>
-      <span class="foot__col foot__col--right">// END_OF_FILE</span>
+      <ul class="footer__links">
+        <li><a href="mailto:ekidafarrasalsabiila@gmail.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/ekidafarrasalsabiila/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/efsalsabiila" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <div class="footer__copy">© <span id="year">2026</span> Ekida Farra Salsabiila</div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    /* Year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Reveal on scroll */
+    (function () {
+      const targets = document.querySelectorAll(
+        '.section-pad, .stats-section, .cta-section, .about-card, .project-card, .timeline__item, .skill-block, .stat-card'
+      );
+      targets.forEach((el) => el.classList.add('reveal'));
+
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach((el) => el.classList.add('is-in'));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      targets.forEach((el) => io.observe(el));
+    })();
+
+    /* Active nav state */
+    (function () {
+      const links = document.querySelectorAll('.nav__links a[href^="#"]');
+      const map = new Map();
+      links.forEach((a) => {
+        const id = a.getAttribute('href').slice(1);
+        const sec = document.getElementById(id);
+        if (sec) map.set(sec, a);
+      });
+      if (!('IntersectionObserver' in window) || map.size === 0) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const link = map.get(entry.target);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            links.forEach((l) => l.classList.remove('is-active'));
+            link.classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+
+      map.forEach((_, sec) => io.observe(sec));
+    })();
+  </script>
 </body>
 </html>
