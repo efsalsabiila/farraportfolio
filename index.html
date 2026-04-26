@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ekida Farra Salsabiila — Data & Business Intelligence</title>
+  <meta name="description" content="Portfolio of Ekida Farra Salsabiila — Data Analyst & Business Intelligence. Power BI, SQL, Python projects." />
+
+  <!-- Fonts: JetBrains Mono (display/mono) + Fraunces (serif body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Grid backdrop -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- Top status bar -->
+  <header class="status-bar">
+    <div class="status-bar__inner">
+      <div class="status-cluster">
+        <span class="dot dot--live"></span>
+        <span class="status-text">SYSTEM // ONLINE</span>
+      </div>
+      <div class="status-cluster status-center">
+        <span class="status-text" id="clock">--:--:-- WIB</span>
+      </div>
+      <div class="status-cluster status-right">
+        <span class="status-text">v.2026.01</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#top" class="nav__brand">
+      <span class="nav__bracket">[</span>EFS<span class="nav__bracket">]</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#about"><span class="nav__num">01</span> About</a></li>
+      <li><a href="#projects"><span class="nav__num">02</span> Projects</a></li>
+      <li><a href="#experience"><span class="nav__num">03</span> Experience</a></li>
+      <li><a href="#skills"><span class="nav__num">04</span> Skills</a></li>
+      <li><a href="#contact"><span class="nav__num">05</span> Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__meta">
+        <span class="tag">// PORTFOLIO_INDEX</span>
+        <span class="tag tag--muted">JKT, ID · 06.34°S 106.82°E</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__line">Ekida Farra</span>
+        <span class="hero__line hero__line--accent">Salsabiila<span class="cursor">_</span></span>
+      </h1>
+
+      <div class="hero__role">
+        <span class="role-label">ROLE</span>
+        <span class="role-value">Data Analyst &middot; Business Intelligence</span>
+      </div>
+
+      <p class="hero__lede">
+        Mathematics graduate from <em>Universitas Gadjah Mada</em> turning operational data
+        into decisions. Currently building dashboards and ETL pipelines at
+        <strong>Sinar Mas Land</strong>.
+      </p>
+
+      <!-- Data card -->
+      <div class="datacard">
+        <div class="datacard__row">
+          <span class="datacard__key">DASHBOARDS_BUILT</span>
+          <span class="datacard__sep">·····················</span>
+          <span class="datacard__val">5+</span>
+        </div>
+        <div class="datacard__row">
+          <span class="datacard__key">DASHBOARDS_MAINTAINED</span>
+          <span class="datacard__sep">·················</span>
+          <span class="datacard__val">25+</span>
+        </div>
+        <div class="datacard__row">
+          <span class="datacard__key">YEARS_EXPERIENCE</span>
+          <span class="datacard__sep">······················</span>
+          <span class="datacard__val">1.5</span>
+        </div>
+        <div class="datacard__row">
+          <span class="datacard__key">GPA_UGM</span>
+          <span class="datacard__sep">······························</span>
+          <span class="datacard__val">3.57 / 4.00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section__head">
+        <span class="section__num">01</span>
+        <h2 class="section__title">About</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-grid__col">
+          <p class="prose">
+            I work at the intersection of <em>numbers</em> and <em>narrative</em>.
+            My background in mathematics taught me to be precise; my time in business intelligence
+            taught me to be useful. I spend most of my days writing SQL, modeling data in Power BI,
+            and trying to make reports that people actually open.
+          </p>
+          <p class="prose">
+            Outside of dashboards I'm interested in machine learning, graph theory
+            (the topic of my undergraduate thesis), and finding new ways to teach
+            others what I'm still learning myself.
+          </p>
+        </div>
+
+        <aside class="about-grid__aside">
+          <div class="kv">
+            <span class="kv__k">based_in</span>
+            <span class="kv__v">Jakarta, ID</span>
+          </div>
+          <div class="kv">
+            <span class="kv__k">education</span>
+            <span class="kv__v">Mathematics, UGM</span>
+          </div>
+          <div class="kv">
+            <span class="kv__k">currently</span>
+            <span class="kv__v">BI Staff @ Sinar Mas Land</span>
+          </div>
+          <div class="kv">
+            <span class="kv__k">stack</span>
+            <span class="kv__v">PowerBI · SQL · Python</span>
+          </div>
+          <div class="kv">
+            <span class="kv__k">availability</span>
+            <span class="kv__v"><span class="dot dot--live small"></span> open to chat</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section__head">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Projects</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <p class="section__intro">
+        A curated selection of analytics, visualization, and machine-learning work.
+        Each is a placeholder — drop in screenshots, links, and write-ups as you publish them.
+      </p>
+
+      <div class="projects">
+
+        <article class="project">
+          <header class="project__head">
+            <span class="project__num">/01</span>
+            <span class="project__year">2024</span>
+          </header>
+          <h3 class="project__title">Olympic Paris 2024 Report</h3>
+          <p class="project__desc">
+            Scraped Kaggle data via Python and built Power BI dashboards analyzing the
+            relationship between each country's medal count and GDP.
+          </p>
+          <ul class="project__tags">
+            <li>Power BI</li><li>Python</li><li>Kaggle API</li>
+          </ul>
+          <div class="project__links">
+            <a href="#" class="link">→ GitHub</a>
+            <a href="#" class="link link--muted">→ Case study</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <header class="project__head">
+            <span class="project__num">/02</span>
+            <span class="project__year">2023</span>
+          </header>
+          <h3 class="project__title">Loan Classification Model</h3>
+          <p class="project__desc">
+            Binary classifier for loan quality using Logistic Regression, LDA, Random Forest
+            and XGBoost. Random Forest delivered the highest accuracy at <strong>97%</strong>.
+          </p>
+          <ul class="project__tags">
+            <li>Python</li><li>scikit-learn</li><li>XGBoost</li>
+          </ul>
+          <div class="project__links">
+            <a href="#" class="link">→ Colab</a>
+            <a href="#" class="link link--muted">→ Deck</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <header class="project__head">
+            <span class="project__num">/03</span>
+            <span class="project__year">2023</span>
+          </header>
+          <h3 class="project__title">FokusIn — Face Recognition Web App</h3>
+          <p class="project__desc">
+            TensorFlow-based face recognition model (81% accuracy) for detecting user attention
+            span. Built during Bangkit Academy in collaboration with Android & Cloud cohorts.
+          </p>
+          <ul class="project__tags">
+            <li>TensorFlow</li><li>CV</li><li>Bangkit</li>
+          </ul>
+          <div class="project__links">
+            <a href="#" class="link">→ GitHub</a>
+            <a href="#" class="link link--muted">→ Deck</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <header class="project__head">
+            <span class="project__num">/04</span>
+            <span class="project__year">2023</span>
+          </header>
+          <h3 class="project__title">Supermarket Sales — Looker Studio</h3>
+          <p class="project__desc">
+            Interactive dashboard tracking sales trends, product performance, and branch
+            comparisons with filters supporting drill-down decisions.
+          </p>
+          <ul class="project__tags">
+            <li>Looker Studio</li><li>BigQuery</li>
+          </ul>
+          <div class="project__links">
+            <a href="#" class="link">→ GitHub</a>
+            <a href="#" class="link link--muted">→ Live report</a>
+          </div>
+        </article>
+
+        <!-- Empty placeholder for future work -->
+        <article class="project project--empty">
+          <header class="project__head">
+            <span class="project__num">/05</span>
+            <span class="project__year">soon</span>
+          </header>
+          <h3 class="project__title">In progress</h3>
+          <p class="project__desc">
+            New work cooking. Time-series forecasting, an OCR experiment, or your next idea.
+          </p>
+          <div class="empty-glyph">+</div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section__head">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Experience</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item">
+          <div class="timeline__date">DEC 2024 → NOW</div>
+          <div class="timeline__body">
+            <h3>Business Intelligence Staff</h3>
+            <p class="timeline__org">Sinar Mas Land</p>
+            <p class="prose">
+              Develop and maintain 25+ Power BI dashboards for sales, customer service,
+              and operations. Build SAP-integrated Actual vs Budget reporting (FICO module,
+              SAP ECC + S/4HANA). Run ad-hoc SQL ETL for urgent business asks.
+            </p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__date">MAY 2024 → NOV 2024</div>
+          <div class="timeline__body">
+            <h3>Business Intelligence Intern</h3>
+            <p class="timeline__org">Sinar Mas Land</p>
+            <p class="prose">
+              Built customer retention and data quality dashboards. Led System Integration
+              Testing for 7 dashboards using SQL. Mapped fact and dimension tables for the
+              migration of 4 reports from legacy Excel pipelines.
+            </p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__date">AUG 2023 → DEC 2023</div>
+          <div class="timeline__body">
+            <h3>Data Analyst Intern</h3>
+            <p class="timeline__org">Skolla EdTech</p>
+            <p class="prose">
+              Re-designed three dashboards (user demography, behaviour, sales) in Looker Studio
+              based on PRDs I authored. QA testing surfaced a 15% error rate before deployment,
+              improving downstream report reliability.
+            </p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__date">AUG 2023 → DEC 2023</div>
+          <div class="timeline__body">
+            <h3>Lecture Assistant — Mathematical Modelling</h3>
+            <p class="timeline__org">Universitas Gadjah Mada</p>
+            <p class="prose">
+              Graded coursework for 76 students and offered office-hour guidance on
+              differential equations, probability, and optimization.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section__head">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Skills</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <div class="skills">
+        <div class="skill-block">
+          <h4 class="skill-block__title">// data &amp; bi</h4>
+          <ul class="skill-list">
+            <li><span>Power BI</span><span class="bar"><i style="--w:80%"></i></span></li>
+            <li><span>SQL</span><span class="bar"><i style="--w:80%"></i></span></li>
+            <li><span>Looker Studio</span><span class="bar"><i style="--w:75%"></i></span></li>
+            <li><span>SAP (BW · ECC · S/4HANA)</span><span class="bar"><i style="--w:65%"></i></span></li>
+            <li><span>Excel</span><span class="bar"><i style="--w:85%"></i></span></li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h4 class="skill-block__title">// programming</h4>
+          <ul class="skill-list">
+            <li><span>Python</span><span class="bar"><i style="--w:75%"></i></span></li>
+            <li><span>scikit-learn</span><span class="bar"><i style="--w:70%"></i></span></li>
+            <li><span>TensorFlow</span><span class="bar"><i style="--w:65%"></i></span></li>
+            <li><span>Pandas / NumPy</span><span class="bar"><i style="--w:80%"></i></span></li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h4 class="skill-block__title">// foundations</h4>
+          <ul class="skill-list skill-list--plain">
+            <li>Statistics &amp; Probability</li>
+            <li>Linear Algebra · Calculus</li>
+            <li>Graph Theory</li>
+            <li>Machine Learning</li>
+            <li>Data Modelling &amp; ETL</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h4 class="skill-block__title">// certifications</h4>
+          <ul class="skill-list skill-list--plain">
+            <li>Mathematics for ML — Coursera</li>
+            <li>ML Specialization — Coursera</li>
+            <li>TensorFlow Developer — DeepLearning.AI</li>
+            <li>TF Data &amp; Deployment — Coursera</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--contact" id="contact">
+      <div class="section__head">
+        <span class="section__num">05</span>
+        <h2 class="section__title">Contact</h2>
+        <span class="section__rule"></span>
+      </div>
+
+      <div class="contact">
+        <p class="contact__lede">
+          Have a project, role, or question? The fastest channels:
+        </p>
+
+        <ul class="contact__list">
+          <li>
+            <span class="contact__key">EMAIL</span>
+            <a class="contact__val link" href="mailto:ekidafarrasalsabiila@gmail.com">
+              ekidafarrasalsabiila@gmail.com
+            </a>
+          </li>
+          <li>
+            <span class="contact__key">LINKEDIN</span>
+            <a class="contact__val link" href="https://linkedin.com/in/ekidafarrasalsabiila/" target="_blank" rel="noopener">
+              /in/ekidafarrasalsabiila
+            </a>
+          </li>
+          <li>
+            <span class="contact__key">PHONE</span>
+            <a class="contact__val link" href="tel:+6281325183143">+62 813-2518-3143</a>
+          </li>
+          <li>
+            <span class="contact__key">GITHUB</span>
+            <a class="contact__val link" href="#">add your handle ↗</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <span class="foot__col">© <span id="year">2026</span> EKIDA FARRA SALSABIILA</span>
+      <span class="foot__col foot__col--center">BUILT WITH HTML · CSS · A LITTLE JS</span>
+      <span class="foot__col foot__col--right">// END_OF_FILE</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
